@@ -1,13 +1,18 @@
 body{
-background: #000000;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #F0F2F0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 color: floralwhite;
 
 }
 
 a{
     color: yellow;
+}
+
+h1{
+    color: blue;
 }
 
 .copyright{
