@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Tech Heros Internship</title>
+        <meta name="description" content="Teens Hero Internship">
+        <meta name="author" content="Flutterwave">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+
+    </head>
+    
+    <body>
+        
+        <div id="container">
+            
+            <div class="container h-100">
+             <div class="row h-100 justify-content-center align-items-center">
+            <h1 class="text-center">Welcome to O-lift!</h1>
+            <h3>Your bill is 2000 Naira. O-lift takes 10% commision. which is 200 Naira</h3>
+                <form>
+                    <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+                    <button type="button" onClick="payWithRave()">Pay Now</button>
+                </form>
+            </div>
+            </div>
+        
+<script>
+    const API_publicKey = "FLWPUBK-3400eea8b3c7ed1004c50f40f7272e15-X";
+
+    function payWithRave() {
+        var x = getpaidSetup({
+            PBFPubKey: API_publicKey,
+            customer_email: "user@example.com",
+            amount: 20000,
+            currency: "NGN",
+            txref: "rave-123456",
+            subaccounts: [
+              {
+                id: "RS_E6C47AB69E5179BAF1D0605F816DDBB2",  //driver's account get 40% of the amount paid
+		            transaction_split_ratio:"4",
+                transaction_charge_type: "flat",
+                transaction_charge: "100"
+              },
+              
+              {
+                id: "RS_1CB017D0107F61B7CB2DAA617E269ED7", //company's account get 40% of the amount paid
+                transaction_split_ratio:"6",
+                transaction_charge_type: "flat",
+                transaction_charge: "100"
+              }
+            ],
+            meta: [{
+                metaname: "flightID",
+                metavalue: "AP1234"
+            }],
+            onclose: function() {},
+            callback: function(response) {
+                var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
+                console.log("This is the response returned after a charge", response);
+                if (
+                    response.tx.chargeResponseCode == "00" ||
+                    response.tx.chargeResponseCode == "0"
+                ) {
+                    // redirect to a success page
+                   window.location.replace("/success");
+                    
+                } else {
+                    // redirect to a failure page.
+                    window.location.replace("/failure");
+                     
+                }
+
+                x.close(); // use this to close the modal immediately after payment.
+            }
+        });
+    }
+</script>
+            
+        </div>
+        
+        
+        
+
+        
+        
+        
+       
+        
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+
